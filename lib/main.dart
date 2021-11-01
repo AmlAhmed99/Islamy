@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islamy/SplashScreen.dart';
 import 'package:islamy/layout/home_layout.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
 import 'package:islamy/screens/moshafDetails.dart';
+import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 
 
 void main() {
@@ -27,6 +29,17 @@ class MyApp extends StatelessWidget {
        MoshafDetails.MoshafDetailsRoute:(context)=>MoshafDetails(),
      },
       debugShowCheckedModeBanner: false,
+
+      localizationsDelegates: [
+        AppLocalizations.delegate, // Add this line
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
+      //locale: Locale('ar'),
+
+
     );
   }
 }

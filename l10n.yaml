@@ -1,0 +1,4 @@
+#extention file location contain translation
+arb-dir: lib/l10n
+#generate localization file
+output-localization-file: app_localizations.dart

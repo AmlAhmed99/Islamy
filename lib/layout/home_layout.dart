@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:islamy/screens/hadesScreen.dart';
 import 'package:islamy/screens/moshafScreen.dart';
 import 'package:islamy/screens/radioScreen.dart';
 import 'package:islamy/screens/sebhaScreen.dart';
-
+import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
       static String HomeRoute='HomeRoute';
@@ -23,12 +22,13 @@ class _HomeState extends State<Home> {
   ];
   @override
   Widget build(BuildContext context) {
+    var local=AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text('اسلامي',style: TextStyle(
+        title: Text(local.app_title,style: TextStyle(
           color: Colors.black,
           fontSize: 30,
           fontWeight: FontWeight.bold
@@ -49,10 +49,10 @@ class _HomeState extends State<Home> {
         unselectedItemColor: Colors.white,
         selectedItemColor:Colors.black,
         items: [
-          BottomNavigationBarItem(label: 'الراديو',icon: Image.asset('assets/images/radio_blue.png', height: 30,),),
-          BottomNavigationBarItem(label: 'التسبيح',icon: Image.asset('assets/images/sebha_blue.png',height: 30,)),
-          BottomNavigationBarItem(label: 'الاحاديث',icon: Image.asset('assets/images/radio_blue.png',height: 30,)),
-          BottomNavigationBarItem(label: 'القران ',icon: Image.asset('assets/images/moshaf_blue.png',height: 30,)),
+          BottomNavigationBarItem(label: local.radio,icon: Image.asset('assets/images/radio_blue.png', height: 30,),),
+          BottomNavigationBarItem(label: local.tasbeh,icon: Image.asset('assets/images/sebha_blue.png',height: 30,)),
+          BottomNavigationBarItem(label: local.hadeth,icon: Image.asset('assets/images/radio_blue.png',height: 30,)),
+          BottomNavigationBarItem(label: local.quran,icon: Image.asset('assets/images/moshaf_blue.png',height: 30,)),
         ],
       ),
       body:Stack(
