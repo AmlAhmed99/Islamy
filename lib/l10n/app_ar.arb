@@ -3,5 +3,9 @@
    "quran":"القران",
    "hadeth":"الحديث",
    "radio":"الراديو",
-   "tasbeh":"التسبيح"
+   "tasbeh":"التسبيح",
+   "settings":"الاعدادات",
+   "tasbehnumber": "عدد التسبيحات",
+   "alahadeth": "الاحاديث",
+   "alquraan" : "القران"
 }

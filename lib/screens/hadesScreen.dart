@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/main.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
-
+import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 class AhadeesScreen extends StatefulWidget {
 
   @override
@@ -32,7 +32,7 @@ class _AhadeesScreenState extends State<AhadeesScreen> {
         children: [
           Image.asset('assets/images/a7ades.png',height: 170,),
           Divider(color: AppTheme.primaryColor,thickness: 2,),
-          Text('الاحاديث',style: TextStyle(
+          Text(AppLocalizations.of(context).alahadeth,style: TextStyle(
             fontSize: 20
           ),),
           Divider(color: AppTheme.primaryColor,thickness: 2,),

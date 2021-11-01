@@ -3,5 +3,10 @@
    "quran":"Quran",
    "hadeth":"Hadeth",
     "radio":"Radio",
-    "tasbeh":"Tasbeh"
+    "tasbeh":"Tasbeh",
+    "setting":"Settings",
+    "tasbehnumber": "Tasbeh Number",
+      "alahadeth": "Al Ahadeeth",
+     "alquraan" : "Al Quraan"
+
 }
