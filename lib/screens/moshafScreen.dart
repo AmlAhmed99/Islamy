@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/main.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
 import 'package:islamy/screens/moshafDetails.dart';
+import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 
 class MoshafScreen extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _MoshafScreenState extends State<MoshafScreen> {
           children: [
             Image.asset('assets/images/moshaf.png',height: 170,),
             Divider(color: AppTheme.primaryColor,thickness: 2,),
-            Text('القران',style: TextStyle(
+            Text(AppLocalizations.of(context).alquraan,style: TextStyle(
                 fontSize: 20
             ),),
             Divider(color: AppTheme.primaryColor,thickness: 2,),

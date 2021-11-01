@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:islamy/main.dart';
+import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 import 'dart:math' as math;
 
 class SebhaScreen extends StatefulWidget {
@@ -28,7 +29,7 @@ class _SebhaScreenState extends State<SebhaScreen> with SingleTickerProviderStat
        controller.reset();
      }
    });
-   setRotation(360);
+   setRotation(10);
   }
 
   @override
@@ -58,19 +59,9 @@ class _SebhaScreenState extends State<SebhaScreen> with SingleTickerProviderStat
               angle: animation.value,
           child: child,
           ),
-          child: InkWell(
-            child: Image.asset('assets/images/seb7a.png',height: 170,),
-            onTap: (){
-              counter++;
-              setRotation(360);
-              controller.forward(from: 0);
-              setState(() {
-
-              });
-            },
-          ),
+          child: Image.asset('assets/images/seb7a.png',height: 170,),
         ),
-          Text('عدد التسبيحات',style: TextStyle(
+          Text(AppLocalizations.of(context).tasbehnumber,style: TextStyle(
             fontSize: 20
           ),),
           Container(
@@ -85,17 +76,27 @@ class _SebhaScreenState extends State<SebhaScreen> with SingleTickerProviderStat
               fontSize: 20
             ),textAlign: TextAlign.center,),
           ),
-          Container(
-            decoration: BoxDecoration(
-                color: AppTheme.primaryColor,
-                borderRadius: BorderRadius.circular(12)
+          InkWell(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: AppTheme.primaryColor,
+                  borderRadius: BorderRadius.circular(12)
+              ),
+              width: 100,
+              height: 50,
+              alignment: Alignment.center,
+              child:Text(doaa,style: TextStyle(
+                  fontSize: 20
+              ),textAlign: TextAlign.center,),
             ),
-            width: 100,
-            height: 50,
-            alignment: Alignment.center,
-            child:Text(doaa,style: TextStyle(
-                fontSize: 20
-            ),textAlign: TextAlign.center,),
+            onTap: (){
+              counter++;
+              setRotation(10);
+              controller.forward(from: 0);
+              setState(() {
+
+              });
+            },
           ),
 
         ],

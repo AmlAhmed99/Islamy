@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:islamy/SplashScreen.dart';
+import 'package:islamy/screens/SplashScreen.dart';
 import 'package:islamy/layout/home_layout.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
 import 'package:islamy/screens/moshafDetails.dart';
@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
       initialRoute:Home.HomeRoute,
      theme: ThemeData(
        primaryColor: AppTheme.primaryColor,
+       appBarTheme: AppBarTheme(
+         color:  Colors.transparent,
+       )
      ),
      routes: {
        SplashScreen.SplashScreenRoute:(context)=>SplashScreen(),
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      //locale: Locale('ar'),
+      locale: Locale('ar'),
 
 
     );
