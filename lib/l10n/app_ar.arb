@@ -7,5 +7,11 @@
    "settings":"الاعدادات",
    "tasbehnumber": "عدد التسبيحات",
    "alahadeth": "الاحاديث",
-   "alquraan" : "القران"
+   "alquraan" : "القران",
+   "languages": "اللغه",
+   "arabic": "العربيه",
+   "english": "الانجليزيه",
+   "modes": "الوضع",
+   "dark": "غامق",
+   "light": "فاتح"
 }

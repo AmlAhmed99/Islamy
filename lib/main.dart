@@ -5,10 +5,16 @@ import 'package:islamy/layout/home_layout.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
 import 'package:islamy/screens/moshafDetails.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:islamy/providers/AppConfigProvider.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(
+      ChangeNotifierProvider<AppConfigProvider>(
+    create: (context)=>AppConfigProvider(),
+      child: MyApp(),
+  ));
 }
 class AppTheme{
  static Color primaryColor=Color.fromRGBO(182, 146, 95, 1.0);
@@ -21,9 +27,6 @@ class MyApp extends StatelessWidget {
       initialRoute:Home.HomeRoute,
      theme: ThemeData(
        primaryColor: AppTheme.primaryColor,
-       appBarTheme: AppBarTheme(
-         color:  Colors.transparent,
-       )
      ),
      routes: {
        SplashScreen.SplashScreenRoute:(context)=>SplashScreen(),
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale('ar'),
+      locale: Locale(Provider.of<AppConfigProvider>(context).appLanguage),
 
 
     );

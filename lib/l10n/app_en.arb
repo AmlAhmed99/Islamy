@@ -7,6 +7,11 @@
     "setting":"Settings",
     "tasbehnumber": "Tasbeh Number",
       "alahadeth": "Al Ahadeeth",
-     "alquraan" : "Al Quraan"
-
+     "alquraan" : "Al Quraan",
+     "languages": "Language",
+       "arabic": "Arabic",
+       "english": "English",
+       "modes": "Mode",
+       "dark": "Dark",
+       "light": "Light"
 }
