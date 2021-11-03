@@ -1,19 +1,18 @@
 
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:islamy/shared/Colors.dart';
 import 'package:provider/provider.dart';
 import 'package:islamy/providers/AppConfigProvider.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 import 'package:islamy/providers/AppConfigProvider.dart';
-
-import 'Colors.dart';
-class ShowLanguageItem extends StatefulWidget {
+class ShowModeItem extends StatefulWidget {
 
   @override
-  _ShowLanguageItemState createState() => _ShowLanguageItemState();
+  _ShowModeItemState createState() => _ShowModeItemState();
 }
 
-class _ShowLanguageItemState extends State<ShowLanguageItem> {
+class _ShowModeItemState extends State<ShowModeItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,7 +28,7 @@ class _ShowLanguageItemState extends State<ShowLanguageItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppLocalizations.of(context).languages,style:TextStyle(
+                Text(AppLocalizations.of(context).modes,style: TextStyle(
                     color: Appcolors.black,
                     fontSize: 20
                 ),),
@@ -38,7 +37,7 @@ class _ShowLanguageItemState extends State<ShowLanguageItem> {
             ),
           )),
       onTap: () {
-        showLanguageButtomSheet(AppLocalizations.of(context).english,AppLocalizations.of(context).arabic);
+        showLanguageButtomSheet(AppLocalizations.of(context).light,AppLocalizations.of(context).dark);
       },
     );
   }
@@ -48,55 +47,56 @@ class _ShowLanguageItemState extends State<ShowLanguageItem> {
         context: context,
         builder: (context){
           return Container(
-            child: ConditionalBuilder(condition: Provider.of<AppConfigProvider>(context).appLanguage=='en' ,
-                builder: (context){
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  selectedItem(text1,'en'),
-                   unSelectedItem(text2,'ar')
-                ],
-              );
-                },
+            child: ConditionalBuilder(
+              condition: Provider.of<AppConfigProvider>(context).isDark==true ,
+              builder: (context){
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DarkItem(text2,Appcolors.secondryColor),
+                    lightItem(text1,Appcolors.black)
+                  ],
+                );
+              },
               fallback: (context){
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  selectedItem(text2,'ar'),
-                   unSelectedItem(text1,'en')
-                ],
-              );
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DarkItem(text2,Appcolors.black),
+                    lightItem(text1,Appcolors.secondryColor)
+                  ],
+                );
               } ,
             ),
           );
+
         }
     );
   }
 
-  Widget selectedItem(text1,lang){
+  Widget lightItem(text1,Color color){
     return Row(
       children: [
         TextButton(
           onPressed: (){
-
-            Provider.of<AppConfigProvider>(context,listen: false).changeLanguage(lang);
+            Provider.of<AppConfigProvider>(context,listen: false).changeLightMode();
           },
           child: Text(text1,style: TextStyle(
-            color: Colors.green,
+            color: color,
           ),),
         ),
-        Icon(Icons.check,color: Colors.green),
+
       ],
     );
   }
 
-  Widget unSelectedItem(text2,lang){
+  Widget DarkItem(text2,Color color){
     return TextButton(
       onPressed: (){
-        Provider.of<AppConfigProvider>(context,listen: false).changeLanguage(lang);
+        Provider.of<AppConfigProvider>(context,listen: false).changeDarkMode();
       },
       child: Text(text2,style: TextStyle(
-        color: Colors.black,
+        color: color,
       ),),
     );
   }

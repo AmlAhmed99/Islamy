@@ -1,10 +1,13 @@
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:islamy/providers/AppConfigProvider.dart';
 import 'package:islamy/screens/hadesScreen.dart';
 import 'package:islamy/screens/moshafScreen.dart';
 import 'package:islamy/screens/radioScreen.dart';
 import 'package:islamy/screens/sebhaScreen.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 import 'package:islamy/screens/settingScreen.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   static String HomeRoute='HomeRoute';
@@ -28,24 +31,29 @@ class _HomeState extends State<Home> {
     return  SafeArea(
       child: Stack(
           children: [
-            Container(
-              color: Colors.transparent,
-              width: double.infinity,
-              child: Image.asset('assets/images/bg3.png',fit: BoxFit.fill,),
+            ConditionalBuilder(
+              condition:  Provider.of<AppConfigProvider>(context).isDark==true ,
+              builder: (context){
+                return Container(
+                  color: Colors.transparent,
+                  width: double.infinity,
+                  child: Image.asset('assets/images/bgdark.png',fit: BoxFit.fill,),
+                );
+              },
+             fallback: (context){
+               return Container(
+                 color: Colors.transparent,
+                 width: double.infinity,
+                 child: Image.asset('assets/images/bg3.png',fit: BoxFit.fill,),
+               );
+             },
             ),
             Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(
-                title: Text(local.app_title,style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
+                title: Text(
+                  local.app_title
                 ),
-                ),
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                centerTitle: true,
-
               ),
               bottomNavigationBar: BottomNavigationBar(
                 currentIndex:currentIDX,
@@ -54,11 +62,7 @@ class _HomeState extends State<Home> {
                     currentIDX=idx;
                   });
                 },
-                elevation: 0,
-                type: BottomNavigationBarType.fixed,
-                backgroundColor:Color.fromRGBO(182, 146, 95, 1.0),
-                unselectedItemColor: Colors.white,
-                selectedItemColor:Colors.black,
+
                 items: [
                   BottomNavigationBarItem(label: local.radio,icon: ImageIcon(AssetImage('assets/images/radio_blue.png',),size: 30,) ),
                   BottomNavigationBarItem(label: local.tasbeh,icon: ImageIcon(AssetImage('assets/images/sebha_blue.png'),size: 30,)),

@@ -4,6 +4,7 @@ import 'package:islamy/main.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
 import 'package:islamy/screens/moshafDetails.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
+import 'package:islamy/shared/Colors.dart';
 
 class MoshafScreen extends StatefulWidget {
   @override
@@ -29,11 +30,9 @@ class _MoshafScreenState extends State<MoshafScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/images/moshaf.png',height: 170,),
-            Divider(color: AppTheme.primaryColor,thickness: 2,),
-            Text(AppLocalizations.of(context).alquraan,style: TextStyle(
-                fontSize: 20
-            ),),
-            Divider(color: AppTheme.primaryColor,thickness: 2,),
+            Divider(color: Appcolors.primaryColor,thickness: 2,),
+            Text(AppLocalizations.of(context).alquraan,style: Theme.of(context).textTheme.bodyText1),
+            Divider(color: Appcolors.primaryColor,thickness: 2,),
             Expanded(
               child: ListView.builder(
                   itemCount: suraNames.length,
@@ -46,9 +45,7 @@ class _MoshafScreenState extends State<MoshafScreen> {
                         child: Container(
                             padding: EdgeInsets.all(8),
                             alignment: Alignment.center,
-                            child: Text(suraNames[idx],style: TextStyle(
-                                fontSize: 18
-                            ),)),
+                            child: Text(suraNames[idx],style: Theme.of(context).textTheme.bodyText2)),
                       )
               ),
             )
