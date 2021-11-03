@@ -4,6 +4,8 @@ import 'package:islamy/main.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
 import 'dart:math' as math;
 
+import 'package:islamy/shared/Colors.dart';
+
 class SebhaScreen extends StatefulWidget {
 
   @override
@@ -61,9 +63,7 @@ class _SebhaScreenState extends State<SebhaScreen> with SingleTickerProviderStat
           ),
           child: Image.asset('assets/images/seb7a.png',height: 170,),
         ),
-          Text(AppLocalizations.of(context).tasbehnumber,style: TextStyle(
-            fontSize: 20
-          ),),
+          Text(AppLocalizations.of(context).tasbehnumber,style: Theme.of(context).textTheme.bodyText1),
           Container(
             decoration: BoxDecoration(
               color: Color.fromRGBO(213, 172, 118, 0.7),
@@ -72,22 +72,18 @@ class _SebhaScreenState extends State<SebhaScreen> with SingleTickerProviderStat
             width: 55,
             height: 60,
             alignment: Alignment.center,
-            child:Text('${counter}',style: TextStyle(
-              fontSize: 20
-            ),textAlign: TextAlign.center,),
+            child:Text('${counter}',style: Theme.of(context).textTheme.bodyText1,textAlign: TextAlign.center,),
           ),
           InkWell(
             child: Container(
               decoration: BoxDecoration(
-                  color: AppTheme.primaryColor,
+                  color: Appcolors.primaryColor,
                   borderRadius: BorderRadius.circular(12)
               ),
               width: 100,
               height: 50,
               alignment: Alignment.center,
-              child:Text(doaa,style: TextStyle(
-                  fontSize: 20
-              ),textAlign: TextAlign.center,),
+              child:Text(doaa,style: Theme.of(context).textTheme.bodyText2,textAlign: TextAlign.center,),
             ),
             onTap: (){
               counter++;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/main.dart';
 import 'package:islamy/screens/hadeesDetails.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
+import 'package:islamy/shared/Colors.dart';
 class AhadeesScreen extends StatefulWidget {
 
   @override
@@ -31,11 +32,9 @@ class _AhadeesScreenState extends State<AhadeesScreen> {
       child: Column(
         children: [
           Image.asset('assets/images/a7ades.png',height: 170,),
-          Divider(color: AppTheme.primaryColor,thickness: 2,),
-          Text(AppLocalizations.of(context).alahadeth,style: TextStyle(
-            fontSize: 20
-          ),),
-          Divider(color: AppTheme.primaryColor,thickness: 2,),
+          Divider(color: Appcolors.primaryColor,thickness: 2,),
+          Text(AppLocalizations.of(context).alahadeth,style: Theme.of(context).textTheme.bodyText1),
+          Divider(color: Appcolors.primaryColor,thickness: 2,),
           Expanded(
             child: ListView.builder(
               itemCount: a7adesHeader.length,
@@ -43,16 +42,13 @@ class _AhadeesScreenState extends State<AhadeesScreen> {
                 InkWell(
                   onTap: (){
 
-
                     Navigator.pushNamed(context, HadeesDetails.HadeesDetailsRoute,
                         arguments: Data(a7adesHeader[idx],idx));
                   },
                   child: Container(
                     padding: EdgeInsets.all(8),
                       alignment: Alignment.center,
-                      child: Text(a7adesHeader[idx],style: TextStyle(
-                          fontSize: 18
-                      ),)),
+                      child: Text(a7adesHeader[idx],style:Theme.of(context).textTheme.bodyText2)),
                 )
             ),
           )

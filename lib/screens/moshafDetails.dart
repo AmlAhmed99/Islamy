@@ -1,8 +1,12 @@
 
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy/main.dart';
 import 'package:flutter_gen/gen_L10n/app_localizations.dart';
+import 'package:islamy/providers/AppConfigProvider.dart';
+import 'package:islamy/shared/Colors.dart';
+import 'package:provider/provider.dart';
 
 class MoshafDetails extends StatefulWidget {
   static const MoshafDetailsRoute='MoshafDetailsRoute';
@@ -24,26 +28,27 @@ class _MoshafDetailsState extends State<MoshafDetails> {
       child: Stack(
           alignment: Alignment.center,
           children: [
-            Container(
-              color: Colors.transparent,
-              width: double.infinity,
-              child: Image.asset('assets/images/bg3.png',fit: BoxFit.fill,),
+            ConditionalBuilder(
+              condition:  Provider.of<AppConfigProvider>(context).isDark==true ,
+              builder: (context){
+                return Container(
+                  color: Colors.transparent,
+                  width: double.infinity,
+                  child: Image.asset('assets/images/bgdark.png',fit: BoxFit.fill,),
+                );
+              },
+              fallback: (context){
+                return Container(
+                  color: Colors.transparent,
+                  width: double.infinity,
+                  child: Image.asset('assets/images/bg3.png',fit: BoxFit.fill,),
+                );
+              },
             ),
             Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(
-                iconTheme: IconThemeData(
-                  color: Colors.black, //change your color here
-                ),
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                title: Text(AppLocalizations.of(context).app_title,style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                ),
-                ),
-                centerTitle: true,
+                title: Text(AppLocalizations.of(context).app_title,),
               ),
               body:  Center(
                 child: Column(
@@ -54,20 +59,19 @@ class _MoshafDetailsState extends State<MoshafDetails> {
                       width: 300,
                       height: 500,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 0.5),
-
+                        color: Provider.of<AppConfigProvider>(context).isDark==true ?
+                                 Appcolors.darkblue
+                                :Appcolors.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child:  Column(
                         children: [
-                          Text(data.SuraName,style: TextStyle(
-                              fontSize: 25
-                          ),),
-                          Divider(thickness: 2,color: AppTheme.primaryColor,),
+                          Text(data.SuraName,style: Theme.of(context).textTheme.subtitle1),
+                          Divider(thickness: 2,color: Appcolors.primaryColor,),
                           verses.isEmpty?
                           Center(
                             child: CircularProgressIndicator(
-                              valueColor:AlwaysStoppedAnimation<Color>(AppTheme.primaryColor) ,
+                              valueColor:AlwaysStoppedAnimation<Color>(Appcolors.primaryColor) ,
                             ),
                           ):
                           Expanded(
@@ -78,6 +82,7 @@ class _MoshafDetailsState extends State<MoshafDetails> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         verses[idx]+'{${idx}}',
+                                        style: Theme.of(context).textTheme.subtitle1,
                                         textAlign:TextAlign.center,
                                         textDirection: TextDirection.rtl,
                                       ),

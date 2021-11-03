@@ -15,9 +15,7 @@ class RadioScreen extends StatefulWidget {
          mainAxisAlignment: MainAxisAlignment.spaceAround,
          children: [
            Image.asset('assets/images/radio.png',height: 170,),
-           Text(AppLocalizations.of(context).radio,style: TextStyle(
-               fontSize: 20
-           ),),
+           Text(AppLocalizations.of(context).radio,style: Theme.of(context).textTheme.bodyText1),
            Image.asset('assets/images/RadioImage.png',height: 170,),
          ],
        ),
